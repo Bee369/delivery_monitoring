@@ -1,12 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'docker:latest' }
+    }
     stages {
         stage('Checkout Code') {
             steps {
-                script {
-                    // Explicitly specify the branch, e.g., 'main'
-                    git url: 'https://github.com/Bee369/delivery_monitoring.git', branch: 'main'
-                }
+                git url: 'https://github.com/Bee369/delivery_monitoring.git', branch: 'main'
             }
         }
         stage('Build Docker Image') {
