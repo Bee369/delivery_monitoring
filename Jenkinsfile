@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/Bee369/delivery_monitoring.git'
+                script {
+                    // Explicitly specify the branch, e.g., 'main'
+                    git url: 'https://github.com/Bee369/delivery_monitoring.git', branch: 'main'
+                }
             }
         }
         stage('Build Docker Image') {
